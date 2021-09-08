@@ -1,4 +1,3 @@
 ﻿# category.github.io
-git add file name <br>
-git commit -m "message" <br>
-git push origin main
+I write about category theory and its application to quantum theory. <br>
+An Introduction to Categorical Quantum Theory
