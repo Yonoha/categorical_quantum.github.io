@@ -179,7 +179,7 @@
 
 %このpdfは私がChris Heunen and Jamie Vicary `Categories for Quantum Theory An Introduction'$\cite{cfqt}$を読んで, 復習のためにまとめたものである. 
 このpdfは圏論的量子力学(Categorical Quantum Theory)について説明したものである. 
-圏論的量子力学ではストリング図式と呼ばれる概念を用いて証明をおこなうことが多いが, このpdfにストリング図式は出てこない. 
+圏論的量子力学では「ストリング図式」と呼ばれる概念を用いて証明をおこなうことが多いが, このpdfにストリング図式は出てこない. 
 ストリング図式は圏論の議論を視覚的に捉えることが出来るため重宝されるが, ここではそれに頼らない厳密な証明を心掛けている.  
 それに伴い`Categories for Quantum Theory'$\cite{cfqt}$では掘り下げられていない数学的な議論も書いたつもりである. 
 ここで壱大整域$\cite{alg-d}$やnlab$\cite{nlab}$, 中村宏行`圏論の技法'\cite{gihou}, `Tensor Categories'$\cite{EGNO}$を参考にした. 
@@ -286,12 +286,12 @@
   この圏を有限関係圏$\frel$とする. 
 \end{eg}  
 
-以降では圏の具体例として$\hilb$を説明する.  
+以降では圏の具体例として$\hilb$をだす.   
 圏論的量子力学の中心となるのは$\hilb$(を制限した$\fhilb$
 \footnote{
-    なぜ, 有限次元への制限である圏$\fhilb$が圏論的量子力学の中心となるかは8章以降で明らかになる.
+    なぜ, 有限次元への制限である圏$\fhilb$が圏論的量子力学の中心となるかは7章以降で明らかになる.
   }
-  )であるのでできるだけ詳しく説明する. 
+  )であるので, できるだけ詳しく説明する. 
 
 次に関手を定義する. 
 これは圏と圏の間の準同型のようなものである. 
@@ -321,21 +321,21 @@
 \end{defn}
 
 \begin{eg}[忘却関手]
-  $F: \hilb \to \cset$を以下の様に定義する. 
+  $F: \hilb \to \cset$を以下のように定義する. 
   $\hilb$の対象$H$と射$f$に対して
   \begin{itemize}
     \item $F(H):=H$
     \item $F(f):=f$
   \end{itemize}
   と定義するとこれは関手となる. 
-  このように構造を忘れる関手を忘却関手(forgetful functor)を呼ぶ. 
+  このように構造を忘れる関手を忘却関手(forgetful functor)という. 
 \end{eg}
 
 群において同型写像で結ばれる2つの群は同型と呼ばれる.
-この性質を一般に圏における対象について定義する. 
+この性質を一般の圏における対象について定義する. 
 
 \begin{defn}[同型]
-  $C$を圏, $A,B$を対象とする. 
+  $A,B$を対象とする. 
   \begin{itemize}
     \item 射$A \xr{f} B$が同型射(isomorphism)であるとはある射$B \xr{g} A$が存在して
     \begin{align*}
@@ -356,14 +356,14 @@
 \begin{defn}[反転圏]
   $C$を圏とする. 
   この時, 圏$C$の射の向きを全て逆にしたものも圏となり, 
-  これを反転圏(opposite category) $C^\Op$という. 
+  これを反転圏(opposite category)$C^\Op$とする. 
 \end{defn}
 
 \begin{defn}[直積圏]
   $C,D$を圏とする. 
-  この時, 圏の直積$C \ti D$を以下の様に定義する. 
+  この時, 圏の直積$C \ti D$を以下のように定義する. 
   \begin{itemize}
-    \item 対象を$C$の対象と$D$の対象の組とする.
+    \item 対象を$C$の対象$A$と$D$の対象$B$の組$<A,B>$とする.
     \item $<A_1,B_1>$から$<A_2,B_2>$への射は成分ごとの射の組とする.
     \item 射の合成は成分ごとにおこなう.
     \item 恒等射は成分ごとの恒等射の組とする.
@@ -374,24 +374,14 @@
 
 \subsection{圏同値と自然変換}
 
-前節では圏の対象の間において同型を定義した. 
-この節では圏の間の同型を定義する. 
-
-\begin{defn}[圏同値]
-  $C,D$を圏とする. 
-  圏$C,D$が圏同値(equivalence of categories)であるとはある関手$F: C \to D$と$G: D \to C$が存在して
-  \begin{align*}
-  G \ci F \cong \id_C \\
-  F \ci G \cong \id_D
-  \end{align*}
-  を満たす時である. 
-  この時$C \simeq D$と表す. 
-\end{defn}
+2節では圏の対象の間において同型を定義した. 
+3節では圏の間の同型を定義する. 
 
 \begin{defn}[自然変換]
-  $C, D$を圏, $F, G: C \to D$を関手とすると自然変換(natural transformation) $\theta: F \ra G$は$D$の射の族
+  $C, D$を圏, $F, G: C \to D$を関手とする. 
+  自然変換(natural transformation) $\theta: F \ra G$とは$D$の射の族
   \begin{align*}
-    \theta := \{ \theta_A: FA \to GA \}_{A \in \Ob(C)}
+    \theta := \{ \theta_A: F(A) \to G(A) \}_{A \in \Ob(C)}
   \end{align*}
   であって, $C$の射$A \xr{f} B$に対して次の図式を可換にするものである. 
   \[\begin{tikzcd}
@@ -410,9 +400,20 @@
   自然同型$\theta: F \ra G$が存在する時, $F$と$G$は自然同型(natural isomorphic)であるといい$F \cong G$と表す. 
 \end{defn}
 
+\begin{defn}[圏同値]
+  $C,D$を圏とする. 
+  圏$C,D$が圏同値(equivalence of categories)であるとはある関手$F: C \to D$と$G: D \to C$が存在して
+  \begin{align*}
+  G \ci F \cong \id_C \\
+  F \ci G \cong \id_D
+  \end{align*}
+  を満たす時である. 
+  この時$C \simeq D$と表す. 
+\end{defn}
+
 \subsection{極限}
 
-この節では一般の極限ではなくその具体例である直積, equalizer, 終対象とそれらの双対概念を定義する. 
+4節では一般の極限ではなく, その具体例である直積, equalizer, 終対象とそれらの双対概念を定義する. 
 双対概念とは図式において全ての射の向きを逆にして得られる概念である. 
 直積, equalizer, 終対象の双対概念はそれぞれ余直積, coequalizer, 始対象である.
 \footnote{
@@ -421,22 +422,22 @@
 
 \begin{defn}[直積]
   $C$を圏, $A, B$を対象とする. 
-  $A$と$B$の直積(product)とは3つ組$(A \ti B, p_A, p_B)$であって以下の条件を満たすものである.
+  $A$と$B$の直積(product)とは3つ組$(A \ti B, p_A, p_B)$であって, 以下の条件を満たすものである.
   \begin{itemize} 
     \item $A \ti B$は$C$の対象である. 
-    \item $A \ti B \xr{p_A} A, A \ti B \xr{p_B} B$は$C$の射である. この射を射影という. 
+    \item $A \ti B \xr{p_A} A, A \ti B \xr{p_B} B$は$C$の射である. 射$p_A,p_B$を射影という. 
     \item ある対象$X$と射$X \xr{q_A} A$と$X \xr{q_B} B$が存在する時, 射$\begin{pmatrix} f \\ g \\ \end{pmatrix}: X \to A \ti B$が一意に存在して$q_A = p_A \ci \begin{pmatrix} f \\ g \\ \end{pmatrix}$, $q_B = p_B \ci \begin{pmatrix} f \\ g \\ \end{pmatrix}$となる. 
-    つまり次の図式を可換にする. 
+    つまり, 次の図式を可換にする. 
   \end{itemize}   
   \[\begin{tikzcd}
-	  &&& X \\
-	  \\
-	  A &&& {A \times B} &&& B
-	  \arrow["{q_B}", from=1-4, to=3-7]
-	  \arrow["{q_A}"', from=1-4, to=3-1]
-	  \arrow["{\begin{pmatrix} f \\ g \\ \end{pmatrix}}"', dashed, from=1-4, to=3-4]
-	  \arrow["{p_A}", from=3-4, to=3-1]
-	  \arrow["{p_B}"', from=3-4, to=3-7]
+    &&& X \\
+    \\
+    A &&& {A \ti B} &&& B
+    \arrow["{q_A}"', from=1-4, to=3-1]
+    \arrow["{q_B}", from=1-4, to=3-7]
+    \arrow["{\begin{pmatrix} f \\ g \\ \end{pmatrix}}", dashed, from=1-4, to=3-4]
+    \arrow["{p_B}"', from=3-4, to=3-7]
+    \arrow["{p_A}", from=3-4, to=3-1]
   \end{tikzcd}\]
 \end{defn}
 
@@ -447,12 +448,12 @@
 
 \begin{defn}[余直積]
   $C$を圏, $A, B$を対象とする. 
-  $A$と$B$の余直積(coproduct)とは3つ組$(A \am B, i_A, i_B)$であって以下の条件を満たすものである.
+  $A$と$B$の余直積(coproduct)とは3つ組$(A \am B, i_A, i_B)$であって, 以下の条件を満たすものである.
   \begin{itemize} 
     \item $A \am B$は$C$の対象である. 
-    \item $A \xr{i_A} A \am B, B \xr{i_B} A \am B$は$C$の射である. この射を入射という. 
+    \item $A \xr{i_A} A \am B, B \xr{i_B} A \am B$は$C$の射である. 射$i_A,i_B$を入射という. 
     \item ある対象$X$と射$A \xr{j_A} X$と$B \xr{j_B} X$が存在する時, 射$A \am B \xr{(f~g)} X$が一意に存在して$j_A = (f~g) \ci i_A$, $j_B = (f~g) \ci i_B$となる. 
-    つまり次の図式を可換にする. 
+    つまり, 次の図式を可換にする. 
   \end{itemize}   
   \[\begin{tikzcd}
     &&& X \\
@@ -472,13 +473,17 @@
 \end{eg}
 
 \begin{defn}[equalizer]
-  $C$を圏, $A, B$を対象, $A \overset{f}{\underset{g}{\rightrightarrows}} B$を射とする. 
-  $f$と$g$のequalizer\footnote{日本語では差核と言われる.}は2つ組$(E, e)$であって以下の条件を満たすものである. 
+  $C$を圏, $A, B$を対象, $A \xr{f,g} B$を射とする. 
+  $f$と$g$のequalizer
+  \footnote{
+      日本語では差核といわれる.
+    }
+  とは2つ組$(E, e)$であって, 以下の条件を満たすものである. 
   \begin{itemize}
     \item $E$は$C$の対象である. 
     \item $E \xr{e} A$は$C$の射で$f \ci e = g \ci e$を満たす. 
     \item ある対象$E'$と射$E' \xr{e'} A$が$f \ci e' = g \ci e'$を満たす時, 射$E' \xr{h} E$が一意に存在して$e' = e \ci h$となる. 
-    つまり次の図式を可換にする. 
+    つまり, 次の図式を可換にする. 
   \end{itemize}
   \[\begin{tikzcd}
 	  E &&& A &&& B \\
@@ -493,7 +498,7 @@
 \end{defn}
 
 \begin{eg}
-  $\hilb$において$A \overset{f}{\underset{g}{\rightrightarrows}} B$のequalizerは集合$E=\{ a \in A | f(a)=g(a) \}$と包含写像$E \xr{e} A$で与えられる. \\
+  $\hilb$において$A \xr{f,g} B$のequalizerは集合$E:=\{ a \in A | f(a)=g(a) \}$と包含写像$E \xr{e} A$で与えられる. \\
   $\rel$においてequalizerは存在しない. 
 \end{eg}  
 
@@ -502,17 +507,17 @@
 \end{defn}
 
 \begin{defn}[coequalizer]
-  $C$を圏, $A, B$を対象, $A \overset{f}{\underset{g}{\rightrightarrows}} B$を射とする. 
+  $C$を圏, $A, B$を対象, $A \xr{f,g} B$を射とする. 
   $f$と$g$のcoequalizer
   \footnote{
-    日本語では余差核と言われる.
+      日本語では余差核といわれる.
     }
-  は2つ組$(E, e)$であって以下の条件を満たすものである. 
+  とは2つ組$(E, e)$であって, 以下の条件を満たすものである. 
   \begin{itemize}
     \item $E$は$C$の対象である. 
     \item $B \xr{e} E$は$C$の射で$e \ci f = e \ci g$を満たす. 
     \item ある対象$E'$と射$B \xr{e'} E'$が$e' \ci f = e' \ci g$を満たす時, 射$E \xr{h} E'$が一意に存在して$e' = h \ci e$となる. 
-    つまり次の図式を可換にする. 
+    つまり, 次の図式を可換にする. 
   \end{itemize}
   \[\begin{tikzcd}
     A &&& B &&& E \\
@@ -528,10 +533,10 @@
 
 \begin{defn}[終対象]
   $C$を圏とする. 
-  $C$の終対象(terminal object)とは対象$I$と射$x$の2つ組$(I,x)$であって任意の$A \in \Ob(C)$に対して射$A \xr{x} I$が一意に存在する.
+  $C$の終対象(terminal object)とは対象$I$と射$x$の2つ組$(I,x)$であって, 任意の$A \in \Ob(C)$に対して射$A \xr{x} I$が一意に存在するものである.
   \footnote{
-  直積の定義と同じように書くと「$C$を圏とする. 
-  $I$が終対象であるとは対象$I$であって, ある$I'$が圏$C$の対象となる時, 射$I' \xr I$が一意に存在する」となる. 
+    直積の定義と同じように書くと「$C$を圏とする. 
+    $I$が終対象であるとは対象$I$であって, ある$I'$が圏$C$の対象となる時, 射$I' \xr I$が一意に存在する」となる. 
   } 
 \end{defn}
 %\[\begin{tikzcd}
@@ -549,10 +554,10 @@
 
 \begin{defn}[始対象]
   $C$を圏とする. 
-  $C$の始対象(initial object)とは対象$I$と射$a$の2つ組$(I,a)$であって任意の$A \in \Ob(C)$に対して射$I \xr{a} A$が一意に存在する.
+  $C$の始対象(initial object)とは対象$I$と射$a$の2つ組$(I,a)$であって, 任意の$A \in \Ob(C)$に対して射$I \xr{a} A$が一意に存在するものである.
   \footnote{
-  直積の定義と同じように書くと 「$C$を圏とする. 
-  $I$が始対象であるとは対象$I$であって, ある$I'$が圏$C$の対象となる時, 射$a \xr a'$が一意に存在する」となる. 
+    直積の定義と同じように書くと 「$C$を圏とする. 
+    $I$が始対象であるとは対象$I$であって, ある$I'$が圏$C$の対象となる時, 射$a \xr a'$が一意に存在する」となる. 
   } 
 \end{defn}
 
@@ -581,14 +586,14 @@
 
 \section{Hilbert空間}
 
-この章では3章以降を読む為に必要なHilbert空間と線形作用素を定義する. 
-以下の公理は一般の体$\mathbb{F}$について考えることが出来るが, このpdfでは係数体として$\mbc$について考えれば十分なので$\mbc$に限定して説明する.
+2章では3章以降を読むために必要なHilbert空間論をまとめる.  
+以下の公理は一般の体$\mathbb{F}$について考えることができるが, このpdfでは係数体として複素数体$\mbc$を考えれば十分なので, $\mbc$に限定して説明する.
 (執筆中)
 
 \subsection{Hilbert空間}
 
 \begin{defn}[複素ベクトル空間]
-  複素ベクトル空間(complex vector space)$V$とは,集合$V$と複素数体$\mbc$に対して演算$+: V \ti V \to V$と$\ti: \mbc \ti V \to V$が定義されていて, 任意の$a, b, c \in V$と$s,t \in \mbc$に対して以下の条件を満たすものである. 
+  複素ベクトル空間(complex vector space)$V$とは,集合$V$と複素数体$\mbc$に対して演算$+: V \ti V \to V$と$\ti: \mbc \ti V \to V$が定義されていて, 任意の$a, b, c \in V$と$s,t \in \mbc$に対して,以下の条件を満たすものである. 
   \begin{itemize}
     \item 交換則: $a + b = b + a$
     \item 結合則: $a + (b + c) = (a + b) + c$
@@ -602,7 +607,11 @@
 \end{defn}
 
 \begin{defn}[内積空間]
-  内積空間(inner space)$H$とはベクトル空間であって, 写像$\Braket{-|-}: H \ti H \to \mbc$が与えられていて, 任意の$a,b,c \in H, s,t \in \mbc$に対して以下の条件を満たすものである. 
+  内積空間(inner space)
+  \footnote{
+    前Hilbert空間(pre Hilbert sp)ともいわれる. 
+  }
+  $H$とはベクトル空間であって, 写像$\Braket{-|-}: H \ti H \to \mbc$が与えられていて, 任意の$a,b,c \in H, s,t \in \mbc$に対して, 以下の条件を満たすものである. 
   \begin{itemize}
     \item 正値性：$\Braket{a|a} \geq 0$
     \item 正定値性: $\Braket{a|a}=0 \ra a=0$
@@ -624,7 +633,7 @@
 
 圏論的量子力学に限らず, 物理を圏論で記述する上で欠かせない圏がモノイダル圏である. 
 「部分系と部分系を合わせたものが全系となる」という物理の基本要請をうまく数学的に定式化したものである. 
-対象を系(部分系)とする圏において, 部分系と部分系を合成する操作, はその圏同士の直積を考えることと一致する. 
+対象を系(部分系)とする圏において, 部分系と部分系を合成する操作は, その圏同士の直積を考えることと一致する. 
 それを系(全系)とみなす(つまり, また圏の対象となる)ということは, その直積圏から元の圏への関手が存在するということである. 
 この考え方から, 1章で定義された単なる圏ではなく, 直積圏から元の圏への関手を備えた圏を考えるべきであろう. 
 モノイダル圏はこの関手を備えた圏である. \\
@@ -632,7 +641,7 @@
 これは読者自身に考えてもらいたい.  
 
 \subsection{モノイダル圏}
-1節ではモノイダル圏, 組紐モノイダル圏, 対称モノイダル圏を定義して, 基本的な性質と定理を示す. 
+1節ではモノイダル圏, 組紐モノイダル圏, 対称モノイダル圏を定義して, 基本的な性質を示す. 
 定理の詳しい証明は\cite{CWM}も参照してほしい. 
 
 \begin{defn}[モノイダル圏]
@@ -661,7 +670,7 @@
     \begin{align*}
       A \ot I \xr{\rho_A} A
     \end{align*}
-    とする自然同型でありである. 
+    とする自然同型である. 
     これを右単位子(right unitor)という. 
     \item 対象$A, B, C, D$について以下の2つの図式
       \footnote{
@@ -690,7 +699,7 @@
 \end{defn}
 
 \begin{thrm}[coherence定理]
-  モノイダル圏において以下の2つは同値である. 
+  モノイダル圏において, 以下の2つは同値である. 
   \begin{itemize}
     \item 恒等射$\id$, 自然同型$\al,\la,\rho$, それらの逆射からテンソル積$\ot$と合成$\circ$をとる操作で構成された射は, それぞれdomainとcodomainが同一であれば射として等しい. 
     \item モノイダル圏の公理に出てくる五角形等式と三角形等式が成立する. 
@@ -702,7 +711,8 @@
 以下でモノイダル圏における諸性質を示すが, その中で１ヶ所coherence定理を用いていることに注意してほしい. 
 
 \begin{eg}
-  $\hilb$はモノイダル圏となる. $H,J,K$をHilbert空間, $a,b,c$をそれぞれ$H,J,K$の任意の元とする. 
+  $\hilb$はモノイダル圏となる. 
+  $H,J,K$をHilbert空間, 任意の元$a \in H, b \in J, c \in H$に対して 
   \begin{itemize}
     \item テンソル積$\ot : \hilb \ti \hilb \to \hilb$はHilbert空間の通常のテンソル積
     \item 単位対象$I$は1次元Hilbert空間$\mbc$
@@ -722,7 +732,7 @@
     \end{align*}
     とする線形写像
   \end{itemize}
-  と定義するとこれはモノイダル圏となる. 
+  と定義すると, これはモノイダル圏となる. 
   対象を有限次元Hilbert空間に制限した$\fhilb$もモノイダル圏となる. 
   これらをそれぞれ$\hilb, \fhilb$と書く. 
   \footnote{
@@ -745,7 +755,8 @@
 \end{lem}
 
 \begin{thrm}[交換則]
-  $C$をモノイダル圏とする. $C$の射$A \xr{f} B, B \xr{g} C, D \xr{h} E, E \xr{i} F$に対して次の等式が成立する. 
+  $A,B,C,D,E,F$を対象, $A \xr{f} B, B \xr{g} C, D \xr{h} E, E \xr{i} F$を射とする. 
+  この時, 次の等式が成立する. 
   \begin{align*}
     (g \ci f) \ot (i \ci h) = (g \ot i) \ci (f \ot h)
   \end{align*}
@@ -773,8 +784,7 @@
 \end{prf}
 
 \begin{lem}
-  $C$をモノイダル圏とする. 
-  $C$の射$f,g$に対して, $f \ot \id_I=g \ot \id_I$または$\id_I \ot f=\id_I \ot g$が成立する時$f=g$である. 
+  モノイダル圏における射$f,g$に対して, $f \ot \id_I=g \ot \id_I$または$\id_I \ot f=\id_I \ot g$が成立する時$f=g$である. 
 \end{lem}
 
 \begin{prf}
@@ -828,7 +838,7 @@
   より可換である.
   図式のそれぞれの射が同型であることから右の三角形も可換である. 
   $I \ot -$が圏同値を与えることから, この三角形の可換性は示したい図式の可換性と同値である. \\
-  下の図式についても同様に示す事が出来る. 
+  下の図式についても同様に示すことができる. 
 \end{prf}
 
 \begin{thrm}
@@ -880,7 +890,11 @@
   $C$を圏とする. 組紐モノイダル圏(braided monoidal category)とは7つ組$(C,\ot,I,\al,\la,\rho,\si)$であって以下の条件を満たすものである. 
   \begin{itemize}
     \item $\ot,I,\al,\la,\rho$はモノイダル圏の定義と同じである. 
-    \item $\si$は対象$A,B$に対して$A \ot B \xr{\si_{A,B}} B \ot A$とする自然同型である . 
+    \item $\si$は対象$A,B$に対して
+    \begin{align*}
+      A \ot B \xr{\si_{A,B}} B \ot A
+    \end{align*}
+    とする自然同型である. これを組紐構造(braiding structure)という.  
     \item 対象$A,B,C$に対して以下の2つの図式
     \footnote{
       2つ合わせて六角形等式(hexagon equation)といわれる. 
@@ -913,12 +927,12 @@
 
 \begin{eg}
   $\hilb$は組紐モノイダル圏となる. 
-  任意の$a \in H, b \in K$に対して
+  $\si$は任意の$a \in H, b \in K$に対して
   \begin{align*}
     \si_{H,K}: H \ot K \to K \ot H: a \ot b \mt b \ot a
   \end{align*}
-  とする線形写像と定義すれば良い.  
-  これをcanonicalな組紐(braiding)構造という. 
+  とする線形写像で与えられる.  
+  これをcanonicalな組紐構造という. 
 \end{eg}
 
 % \begin{eg}
@@ -927,7 +941,7 @@
 % \end{eg}
 
 \begin{defn}[対称モノイダル圏]
-  対称モノイダル圏(symmetric monoidal category)とは組紐モノイダル圏であって対象$A,B$と自然同型$\si_{A,B}$について以下の等式を満たすものである. 
+  対称モノイダル圏(symmetric monoidal category)とは組紐モノイダル圏であって, 対象$A,B$と自然同型$\si_{A,B}$が以下の等式を満たすものである. 
   \begin{align*}
     \si_{B,A} \ci \si_{A,B} = \id_{A \ot B}
   \end{align*}
@@ -990,7 +1004,8 @@
 
 \subsection{モノイダル関手}
 
-モノイダル圏を定義し, 具体例も見てきたところで, 次はモノイダル圏の間の関手を定義しよう. 
+1節ではモノイダル圏を定義し, $\hilb$が例となることを見た. 
+2節ではモノイダル圏の間の関手を定義しよう. 
 
 \begin{defn}[モノイダル関手]
   $C,D$をモノイダル圏とする. 
@@ -1039,7 +1054,7 @@
   $F: \fset \to \frel$や$G: \fset \to \fhilb$はモノイダル関手となる. 
 \end{eg}
 
-以降で表れるモノイダル関手$(F,\vp,\vp_0)$の中で表れる$F$は$F: C \to D$という関手を表すことにする. 
+以降ではモノイダル関手$(F,\vp,\vp_0)$の$F$は$F: C \to D$という関手を表すことにする. 
 
 \begin{defn}[組紐モノイダル関手]
   $C,D$を組紐モノイダル圏とする. 
@@ -1060,7 +1075,7 @@
   対称モノイダル関手(symmetric monoidal functor)
   \footnote{
     対称モノイダル関手は組紐モノイダル関手と違って可換図式の条件が追加で課されない. 
-    これは組紐モノイダル圏はモノイダル圏に自然同型$\si_{A,B}$という構造が課されるが, 対称モノイダル圏は組紐モノイダル圏に$\si_{B,A} \ci \si_{A,B} = \id_{A \ot B}$という性質が追加されるだけという違いから生じるものである. 
+    これは組紐モノイダル圏はモノイダル圏に自然同型$\si_{A,B}$という「構造」が課されるが, 対称モノイダル圏は組紐モノイダル圏に$\si_{B,A} \ci \si_{A,B} = \id_{A \ot B}$という「性質」が追加されるだけという違いから生じるものである. 
   }
   $(F,\vp,\vp_0)$とはその間の組紐モノイダル関手である. 
 \end{defn}
@@ -1069,27 +1084,9 @@
 
 2つのモノイダル圏が同値であるとはどういうことであるか. 
 それを定義するために必要な考え方がモノイダル同値である. 
-モノイダル同値の定義から, モノイダル関手の間の自然変換も自然に定義される. 
+モノイダル自然変換から, モノイダル圏の同値が自然に定義される. \\
 
-\begin{defn}[モノイダル同値]
-  $C,D$をモノイダル圏, $(F,\vp,\vp_0)$をモノイダル関手とする. 
-  $C,D$がモノイダル同値(monoidal equivalence)であるとは, モノイダル関手$(F,\vp,\vp_0)$に対してある関手$G: D \to C$が存在して
-  \begin{align*}
-    G \ci F \cong \id_C \\
-    F \ci G \cong \id_D
-  \end{align*}  
-  が成立する時である. 
-\end{defn} 
-
-\begin{thrm}
-  $C,D$をモノイダル圏, $(F,\vp,\vp_0)$をモノイダル関手とする. 以下の2つは同値である. 
-  \begin{itemize}
-    \item $C,D$がモノイダル同値である. 
-    \item $(F,\vp,\vp_0)$がモノイダル関手であり, 通常の関手として圏同値を与える. 
-  \end{itemize}
-\end{thrm}
-
-以降で表れるモノイダル関手$(F,\vp,\vp_0),(G,\vp',\vp'_0)$の中で表れる$F,G$は$F,G: C \to D$という関手を表すことにする.
+以降ではモノイダル関手$(F,\vp,\vp_0),(G,\vp',\vp'_0)$の$F,G$は$F,G: C \to D$という関手を表すことにする.
 
 \begin{defn}[モノイダル自然変換]
   $C,D$をモノイダル圏, $(F,\vp,\vp_0),(G,\vp',\vp'_0)$をモノイダル関手とする. 
@@ -1117,6 +1114,28 @@
   対称モノイダル自然変換(symmetric monoidal natural transformation)$\mu: F \ra G$とはその間のモノイダル自然変換である. 
 \end{defn}
 
+\begin{defn}[モノイダル同値]
+  $C,D$をモノイダル圏, $(F,\vp,\vp_0)$をモノイダル関手とする. 
+  $C,D$がモノイダル同値(monoidal equivalence)であるとは, モノイダル関手$(F,\vp,\vp_0)$に対してある関手$G: D \to C$が存在して
+  \begin{align*}
+    G \ci F \cong \id_C \\
+    F \ci G \cong \id_D
+  \end{align*}  
+  が成立する時である. 
+\end{defn} 
+
+\begin{thrm}
+  $C,D$をモノイダル圏, $(F,\vp,\vp_0)$をモノイダル関手とする. 以下の2つは同値である. 
+  \begin{itemize}
+    \item $C,D$がモノイダル同値である. 
+    \item $(F,\vp,\vp_0)$がモノイダル関手であり, 通常の関手として圏同値を与える. 
+  \end{itemize}
+\end{thrm}
+
+\begin{prf}
+  省略
+\end{prf}
+
 \subsection{厳格化定理とcoherence定理}
 
 4節では厳格化定理とモノイダル圏におけるcoherence定理を証明する. 
@@ -1124,11 +1143,11 @@
 (執筆中)
 
 \begin{defn}[厳格モノイダル圏]
-  厳格モノイダル圏(strict monoidal category)とはモノイダル圏であって自然同型$\al,\la,\rho$が全て恒等射となる時である. 
+  厳格モノイダル圏(strict monoidal category)とはモノイダル圏であって, 自然同型$\al,\la,\rho$が全て恒等射となる時である. 
 \end{defn}
 
 \begin{defn}[厳格モノイダル関手]
-  厳格モノイダル関手(strict monoidal functor)とはモノイダル関手$(F,\vp,\vp_0)$であって自然同型$\vp,\vp_0$が恒等射となる時である. 
+  厳格モノイダル関手(strict monoidal functor)とはモノイダル関手$(F,\vp,\vp_0)$であって, 自然同型$\vp,\vp_0$が恒等射となる時である. 
 \end{defn}
 
 \begin{eg}
@@ -1170,7 +1189,7 @@
 
 \begin{eg}
   $\hilb$においてscalarとは$\mbc \xr{f} \mbc$である. 
-  $\mbc \overset{f}{\underset{g}{\rightrightarrows}} \mbc$に対して$f,g$が(有界)線形作用素であるので$s \in \mbc$について
+  $\mbc \xr{f,g} \mbc$に対して$f,g$が(有界)線形作用素であるので, $s \in \mbc$に対して
   \begin{align*}
     f(s)=sf(1)
   \end{align*}
@@ -1184,7 +1203,7 @@
 \end{eg}
 
 \begin{thrm}
-  モノイダル圏において$I \overset{f}{\underset{g}{\rightrightarrows}} I$は
+  モノイダル圏において$I \xr{f,g} I$は
   \begin{align*}
     f \ci g = g \ci f
   \end{align*}
@@ -1247,30 +1266,30 @@
 詳しい証明は\cite{gihou}を参照してほしい. 
 
 \begin{defn}[零射]
-  圏$C$が零射(zero morphism)を持つとは以下の条件を満たす時である. 
+  圏が零射(zero morphism)を持つとは以下の条件を満たす時である. 
   \begin{itemize}
-    \item 任意の対象$A,B$に対して零射と呼ばれる射$0_{A,B}$が与えられる.
+    \item 任意の対象$A,B$に対して零射といわれる射$A \xr{0_{A,B}} B$が存在する.
     \item 零射と任意の射の合成は零射となる. 
-    つまり任意の対象$A,B,C$と射$A \xr{f} B, B \xr{g} C$に対して以下を満たす. 
+    つまり任意の対象$A,B,C$と射$A \xr{f} B, B \xr{g} C$に対して
     \begin{align*}
       0_{B,C} \ci f = 0_{A,C} \\
       g \ci 0_{A,B} = 0_{A,C}
     \end{align*}
+    が成立する. 
   \end{itemize}
 \end{defn}
 
 以降では$0_{A,B}$を混乱の恐れがない限り$0$と表す. 
 
 \begin{defn}[零対象]
-  $C$を圏とする. 
-  圏$C$の対象$I$が零対象(zero object)であるとは, $I$が終対象かつ始対象となる時である. 
+  圏の対象$I$が零対象(zero object)であるとは, $I$が終対象かつ始対象となる時である. 
 \end{defn}
 
 \begin{eg}
   $\hilb$において零射は任意の元を$0$に送る零写像で与えられる. 
   零対象は0次元ベクトル空間で与えられる. 
   \footnote{
-    単位対象と零対象に同じ記号$I$を用いているが, この例からも分かるように全く関係ないし一般には一致しない. 
+    単位対象と零対象に同じ記号$I$を用いているが, この例からも分かるように一般には一致しない. 
     単位対象はモノイダル圏において定義されるが, 零対象は一般の圏において(存在すれば)定義されるものである. 
   }
 \end{eg}
@@ -1285,8 +1304,8 @@
 
 
 \begin{thrm}
-  $C$を零対象$0$を持つ圏とする. 
-  対象$A,B$に対して零対象を経由する射$A \to 0 \to B$は零射となる. 
+  零対象$0$を持つ圏において対象$A,B$とする. 
+  この時, 零対象を経由する射$A \to 0 \to B$は零射となる. 
 \end{thrm} 
 
 \begin{prf}
@@ -1297,20 +1316,19 @@
 %またこの射も$0_{A,B}$や混乱の恐れがない時は$0$と書く. 
 
 \begin{thrm}
-  $C$を零射が与えられた圏, $A,B$を対象とする. 
-  この時, 以下の3つが成立する. 
+  零射が与えられた圏において$A,B$を対象とすると, 以下の3つが成立する. 
   \begin{itemize}
-    \item 直積$(A \ti B,p_A,p_B)$が存在する時, 以下の等式を満たす射$A \xr{i'_A} A \ti B, B \xr{i'_B} A \ti B$が一意に存在する. 
+    \item 直積$(A \ti B,p_A,p_B)$が存在する時, 以下を満たす射$A \xr{i'_A} A \ti B, B \xr{i'_B} A \ti B$が一意に存在する. 
     \begin{align*}
       &p_A \ci i'_A = \id_A, ~ p_B \ci i'_B = \id_B \\
       &p_A \ci i'_B = 0, ~ p_B \ci i'_A = 0
     \end{align*}
-    \item 余直積$(A \am B,i_A,i_B)$が存在する時, 以下の等式を満たす射$A \am B \xr{p'_A} A,A \am B \xr{p'_B} B$が一意に存在する. 
+    \item 余直積$(A \am B,i_A,i_B)$が存在する時, 以下を満たす射$A \am B \xr{p'_A} A,A \am B \xr{p'_B} B$が一意に存在する. 
     \begin{align*}
       &p'_A \ci i_A = \id_A, ~ p'_B \ci i_B = \id_B \\
       &p'_A \ci i_B = 0, ~ p'_B \ci i_A = 0
     \end{align*}
-    \item 直積$(A \ti B,p_A,p_B)$と余直積$(A \am B,i_A,i_B)$が存在する時, 以下の等式を満たす射$A \am B \xr{h} A \ti B$が一意に存在する. 
+    \item 直積$(A \ti B,p_A,p_B)$と余直積$(A \am B,i_A,i_B)$が存在する時, 以下を満たす射$A \am B \xr{h} A \ti B$が一意に存在する. 
     \begin{align*}
       &p_A \ci h \ci i_A = \id_A, ~ p_B \ci h \ci i_B = \id_B \\
       &p_A \ci h \ci i_B = 0, ~ p_B \ci h \ci i_A = 0
@@ -1323,7 +1341,7 @@
 \end{prf}
 
 \begin{thrm}
-  $C$を零射が与えられた圏, $A,B$を対象, $p'_A,p'_B,i'_A,i'_B,h$を前の補題で得られた射とする. 
+  零射が与えられた圏において$A,B$を対象, $p'_A,p'_B,i'_A,i'_B,h$を前の補題で得られた射とする. 
   この時, 以下の3つは同値である.
   \begin{itemize}
     \item 直積$(A \ti B,p_A,p_B)$が存在して$(A \ti B,i'_A, i'_B)$が$A,B$の余直積となる.
@@ -1337,7 +1355,7 @@
 \end{prf}
 
 \begin{defn}[直和]
-  $C$を零射が与えられた圏, $A,B$を対象とする. 
+  零射が与えられた圏において$A,B$を対象とする. 
   上の命題のいずれかが成立する時, $A$と$B$の直和(derect sum)が存在するという. 
   この時$A$と$B$の直和, つまり(余)直積を$A \opl B$
   \footnote{
@@ -1346,10 +1364,10 @@
   と表す. 
 \end{defn}
 
-直和の具体例は後に定義される複積で紹介する. 
+直和の具体例は後に定義される複積で説明する. 
 
 \begin{lem}
-  $C$を零射が与えられた圏, $A,B$を対象とする. 
+  零射が与えられた圏において$A,B$を対象とする. 
   $A,B$の直和$A \opl B$が存在する時,上の命題により射$p_A,p_B,i_A,i_B$が存在して以下の命題を満たす. 
   \begin{itemize}
     \item $(A \opl B,p_A,p_B)$は直積となる. 
@@ -1453,7 +1471,7 @@
 \end{prf}
 
 \begin{defn}[複積]
-  $C$を零対象と重ね合わせ則を持つ圏, $A,B$を対象とする. 
+  零対象と重ね合わせ則を持つ圏において$A,B$を対象とする. 
   $A,B$の複積(biproduct)
   \footnote{
     通常はプレ加法圏において定義される概念であるが, 零対象と重ね合わせ則を持つ圏においても同様に定義することが出来る.
@@ -1525,7 +1543,7 @@
 \end{prf}
 
 \begin{lem}
-  複積と零対象を持つ圏において重ね合わせ則は一意に定まる. 
+  複積と零対象を持つ圏において, 重ね合わせ則は一意に定まる. 
 \end{lem}
 
 \begin{prf}
@@ -1535,7 +1553,7 @@
 \subsection{射の行列表示}
 
 \begin{defn}[射の行列表示]
-  $C$を零射を持つ圏, $A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M$を直和とする. 
+  零射が与えられた圏において$A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M$を直和とする. 
   \begin{itemize}
     \item $A$から$B_i(1 \leq i \leq M)$の族$\{ A \xr{f_i} B_i \}_{1 \leq i \leq M}$に対して直積の普遍性より得られる射$A \xr{f} B_1 \opl \cdots \opl B_M$を
     \begin{align*}
@@ -1594,8 +1612,8 @@
 \end{defn}
 
 \begin{defn}
-  $C$を零射を持つ圏, $A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M$を直和, $A_1 \opl \cdots \opl A_N \xr{f} B_1 \opl \cdots \opl B_M$を射とする. 
-  この時, $1 \leq i \leq M, 1 \leq j \leq N$に対して自然な入射と射影を合成して
+  零射が与えられた圏において$A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M$を直和, $A_1 \opl \cdots \opl A_N \xr{f} B_1 \opl \cdots \opl B_M$を射とする. 
+  この時, $1 \leq i \leq M, 1 \leq j \leq N$に対して, 自然な入射と射影を合成して
   \begin{align*}
     f_{i,j}=p_i \ci f \ci i_j
   \end{align*}
@@ -1615,7 +1633,7 @@
 \end{defn}
 
 \begin{thrm}
-  $C$を零射を持つ圏, $A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M, C_1 \opl \cdots \opl C_L$を直和とする. 
+  零射が与えられた圏において$A_1 \opl \cdots \opl A_N, B_1 \opl \cdots \opl B_M, C_1 \opl \cdots \opl C_L$を直和とする. 
   射$A_1 \opl \cdots \opl A_N \xr{f} B_1 \opl \cdots \opl B_M \xr{g} C_1 \opl \cdots \opl C_L$に対して行列表示が与えられているとする. 
   この時, 合成射$g \ci f$の行列表示は行列の積のように表すことができる. 
 \end{thrm}
@@ -1626,7 +1644,7 @@
 
 \begin{eg}
   $\hilb$において射の行列表示は, 線形写像を行列とみなした時の通常の行列表示で与えられる. 
-  射の行列表示の積はこの意味での通常の行列表示の積で与えられる. 
+  射の行列表示の積は, この意味での通常の行列表示の積で与えられる. 
 \end{eg}
 
 % ではここで射の和を定義する. 
@@ -1650,7 +1668,7 @@
 
 \subsection{ダガー圏}
 
-ベクトル空間$V,W$の間の線形写像$H \xr{f} K$は一意な随伴$f^\da$を持ち, これも線形写像$K \xr{f^\da} H$となる. 
+ベクトル空間$V,W$の間の線形写像$H \xr{f} K$は一意な随伴$K \xr{f^\da} H$を持ち, これも線形写像となる. 
 このダガーの性質を一般に圏において定義する. 
 
 \begin{defn}[ダガー関手]
@@ -1675,7 +1693,7 @@
   ダガー関手$(-)^\da: \hilb \to \hilb$は対象をそれ自身に, 射をその随伴写像に移す対応で与えられる. 
 \end{eg}
 
-随伴の存在によりHilbert空間における内積を定義することが出来る. 
+随伴の存在により, Hilbert空間における内積を定義することができる. 
 
 \begin{thrm}
   $\hilb$において$H$を対象, $\mbc \xr{a,b} H$を射とする. この時, scalar $\mbc \xr{b} H \xr{a^\da} \mbc$は内積$\Braket{a|b}$に一致する. 
@@ -1711,14 +1729,15 @@
 \end{prf}
 
 \begin{lem}
-  $C$を零対象を持つダガー圏, $A,B$を対象とすると以下の等式が成立する. 
+  零対象を持つダガー圏において$A,B$を対象とする. 
+  この時, 以下の等式が成立する. 
   \begin{align*}
     0_{A,B}^\da = 0_{B,A}
   \end{align*}
 \end{lem}
 
 \begin{prf}
-  $C$の射$A \xr{a} 0 \xr{b} B$とすると$B \xr{b^\da} 0 \xr{a^\da} A$であるので
+  $A \xr{a} 0 \xr{b} B$とすると$B \xr{b^\da} 0 \xr{a^\da} A$であるので
   \begin{align*}
     0_{A,B}^\da
     &= (b \ci a)^\da \\
@@ -1732,7 +1751,7 @@
 
 \begin{defn}[ダガー核]
   $C$を零対象を持つダガー圏とする. 
-  $A,B$を対象, $A \overset{f}{\underset{0}{\rightrightarrows}} B$を射とすると, $A \xr{f} B$のダガー核(degger kernel)とは2つ組$(K,k)$で以下の条件を満たすものである. 
+  $A,B$を対象, $A \xr{f,g} B$を射とすると, $A \xr{f} B$のダガー核(degger kernel)とは2つ組$(K,k)$であって, 以下の条件を満たすものである. 
   \begin{itemize}
     \item $K$は$C$の対象である. 
     \item $K \xr{k} A$は$f \ci k = 0_{K,B}$を満たす$C$の等長射である. 
@@ -1783,7 +1802,7 @@
 
 \begin{eg}
   $\hilb$はダガー核をもつ. 
-  Hilbert空間$H,K$とその間の有界線形作用素$H \xr{f} K$のダガー核は$\ker{f}:=\{a \in H | f(a)=0\}$から$H$への包含写像である. 
+  Hilbert空間$H,K$とその間の有界線形作用素$H \xr{f} K$のダガー核は$\ker(f):=\{a \in H | f(a)=0\}$から$H$への包含写像である. 
   $\ker(f)$が$H$から誘導される内積によって定まるので, 単に核ではなくダガー核となる. 
 \end{eg}
 
@@ -1798,12 +1817,18 @@
 \subsection{ダガー複積}
 
 \begin{defn}[ダガー複積]
-  零対象と重ね合わせ則を持つダガー圏において, 対象$A,B$のダガー複積(dagger biproduct)とは複積$(A \opl B,p_A,p_B,i_A,i_B)$であって$i_A^\da=p_A, i_B^\da=p_B$を満たす時である. 
+  零対象と重ね合わせ則を持つダガー圏, $A,B$を対称とする. 
+  ダガー複積(dagger biproduct)とは複積$(A \opl B,p_A,p_B,i_A,i_B)$であって
+  \begin{align*}
+    i_A^\da=p_A \\
+    i_B^\da=p_B
+  \end{align*}
+  を満たす時である. 
 \end{defn}
 
 \begin{lem}
-  ダガー複積を持つダガー圏において行列の随伴はそのダガー転置である. 
-  つまり以下の等式が成立する. 
+  ダガー複積を持つダガー圏において, 行列の随伴はそのダガー転置である. 
+  つまり, 以下の等式が成立する. 
   \begin{align*} 
       \begin{pmatrix}
       f_{1,1} & \cdots & f_{M,1} \\
@@ -1852,11 +1877,11 @@
     &= \sum_{p,q} i_p \ci \left( \sum_{m,n} i_q^\da \ci i_n \ci f_{m,n} \ci i_m^\da \ci i_p \right)^\da \ci i_q^\da \\
     &= \sum_{p,q} i_p \ci (f_{p,q})^\da \ci i_p^\da 
   \end{align*}
-  射の行列表示の定義より右辺に一致する. 
+  射の行列表示の定義より, これは右辺に一致する. 
   最後の等式で直和の定義
   \begin{align*}
-    \id_{A_n}=p_n \ci i_n \\
-    0_{A_n,A_m}=p_m \ci i_n~(m \neq n)
+    \id_{A_n}&=p_n \ci i_n \\
+    0_{A_n,A_m}&=p_m \ci i_n~(m \neq n)
   \end{align*}
   を用いた. \\
   一般の有限複積についても同様に示すことができる.
@@ -1867,7 +1892,7 @@
 
 \begin{lem}
   ダガー複積を持つダガー圏において, ダガーは加法について分配則を持つ. 
-  つまり, 対象$A,B$と射$A \overset{f}{\underset{g}{\rightrightarrows}} B$に対して以下の等式が成立する.
+  つまり, 対象$A,B$と射$A \xr{f,g} B$に対して以下の等式が成立する.
   \begin{align*}
     (f+g)^\da = f^\da + g^\da
   \end{align*}
@@ -1905,12 +1930,12 @@
 
 \subsection{モノイダルダガー圏}
 
-Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, H_2 \xr{g} K_2$に対してテンソル積と随伴をとる対応は可換である. 
+Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, H_2 \xr{g} K_2$に対して,テンソル積と随伴をとる操作は可換である. 
 つまり$(f \ot g)^\da = f^\da \ot g^\da$が成立する. 
 この性質をモノイダル積とダガーを備えた圏で一般に議論する. 
 
 \begin{defn}[モノイダルダガー圏]
-  モノイダルダガー圏(monoidal dagger category)とはモノイダル圏かつダガー圏であって以下の条件を満たすものである. 
+  モノイダルダガー圏(monoidal dagger category)とはモノイダル圏かつダガー圏であって, 以下の条件を満たすものである. 
   \begin{itemize}
     \item 任意の射$f,g$に対して$(f \ot g)^\da = f^\da \ot g^\da$
     \item 自然同型$\al, \la, \rho$が全てユニタリとなる. 
@@ -1918,11 +1943,11 @@ Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, 
 \end{defn}
 
 \begin{defn}[組紐モノイダルダガー圏]
-  組紐モノイダルダガー圏(braided monoidal dagger category)とはモノイダルダガー圏であって組紐構造$\si$がユニタリである時である
+  組紐モノイダルダガー圏(braided monoidal dagger category)とはモノイダルダガー圏であって, 組紐構造$\si$もユニタリである時である
 \end{defn}
 
 \begin{defn}[対称モノイダルダガー圏]
-  対称モノイダルダガー圏(symmetric monoidal dagger category)とは組紐モノイダルダガー圏であって組紐構造$\si$が対称となる時である. 
+  対称モノイダルダガー圏(symmetric monoidal dagger category)とは組紐モノイダルダガー圏であって, 組紐構造$\si$が対称となる時である. 
 \end{defn}
 
 \begin{eg}
@@ -1937,7 +1962,7 @@ Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, 
 
 \section{双対化可能}
 
-圏論的量子力学で一番大事な概念は双対化可能性であるといっても過言ではない. 
+圏論的量子力学で一番重要な概念は双対化可能性であるといっても過言ではない. 
 双対化可能である圏はテンソル積や重ね合わせ則と相性が良い. 
 また, 線形代数に出てくるトレースや次元の類似概念を定義することができる. 
 証明は\cite{CWM}も参考にしてほしい.   
@@ -1945,7 +1970,7 @@ Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, 
 \subsection{双対対象}
 
 \begin{defn}[左双対]
-  $C$をモノイダル圏, $A$を$C$の対象とする. 
+  $C$をモノイダル圏, $A$を対象とする. 
   $C$の対象${}^*A$が$A$の左双対(left dual)であるとは射$\eva_A: {}^*A \ot A \to I$と$\coev_A: I \to A \ot {}^*A$が存在して, 以下の図式を可換にするものである. 
   \[\begin{tikzcd}
     {}^*A && {{}^*A \ot I} && {{}^*A \ot (A \ot {}^*A)} \\
@@ -1973,7 +1998,7 @@ Hilbert空間$H_1,H_2,K_1,K_2$とその間の有界線形写像$H_1 \xr{f} K_1, 
 \end{defn}
 
 \begin{defn}[右双対]
-  $C$をモノイダル圏, $A$を$C$の対象とする. 
+  $C$をモノイダル圏, $A$を対象とする. 
   $C$の対象$A^*$が$A$の右双対(right dual)であるとは射$\eva'_A: A \ot A^* \to I$と$\coev'_A: I \to A^* \ot A$が存在して, 以下の図式を可換にするものである. 
   \[\begin{tikzcd}
     A^* && {{}^*A \ot I} && {A^* \ot (A \ot A^*)} \\
@@ -2046,7 +2071,7 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
   剛モノイダル圏(rigid monoidal category)とは, 左剛モノイダル圏かつ右剛モノイダル圏である(つまり$C$の任意の対象が左双対と右双対を持つ)時である. 
 \end{defn}
 
-圏における任意の対象が双対対象を持つ時, 圏は双対化可能(dualizable)であるという. 
+圏における任意の対象が(左, 右)双対対象を持つ時, 圏は(左, 右)双対化可能(dualizable)であるという. 
 組紐モノイダル圏や対称モノイダル圏についても同様に定義することができる. \\
 
 以下で見る例はこのpdfで最も重要な例の1つである. 
@@ -2074,9 +2099,9 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
 
 このことは後に証明する. \\
 
-章の初めに述べたように, 双対化は圏論的量子力学において重要な役割を果たす. 
+6章の初めに述べたように, 双対化は圏論的量子力学において重要な役割を果たす. 
 ここから圏論的量子力学の中心となる圏が, 有限次元に限定される$\fhilb$であることが想像できるだろう. 
-今までに述べた例は$\hilb$についてあったが, 勿論$\fhilb$についても同様なことが示される. 
+今までに述べた例は$\hilb$についてあったが, 勿論$\fhilb$についても示される. 
 
 \begin{lem}
   剛モノイダル圏において対象$A$の左双対が${}^*A$であるとする. 
@@ -2137,9 +2162,9 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
     \arrow["{\la_{{}^*A}}", from=3-3, to=3-1]
     \arrow["{{}^*f}"', from=1-1, to=3-1]
   \end{tikzcd}\]
-  この射${}^*f$を$f$の左双対射(left dual morphism)
+  射${}^*f$を$f$の左双対射(left dual morphism)
   \footnote{
-    単に左双対(left dual)や左転置(left transpose)とも言われる. 
+    単に左双対(left dual)や左転置(left transpose)ともいわれる. 
   }
   という. 
 \end{defn}
@@ -2159,9 +2184,9 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
     \arrow["{f^*}"', from=1-1, to=3-1]
     \arrow["{\rho_{A^*}}", from=3-3, to=3-1]
   \end{tikzcd}\]
-  この射$f^*$を$f$の右双対射(right dual morphism)
+  射$f^*$を$f$の右双対射(right dual morphism)
   \footnote{
-    単に右双対(right dual)や右転置(right transpose)とも言われる. 
+    単に右双対(right dual)や右転置(right transpose)ともいわれる. 
   }
   という. 
 \end{defn}
@@ -2244,7 +2269,7 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
 
 \begin{defn}[左ピボタル圏]
   $C$を剛モノイダル圏とする. 
-  $C$が左ピボタル圏(left pivotal category)であるとはモノイダル自然同型$A \xr{{}^*\pi_A} {}^{**}A$が存在する時である.
+  $C$が左ピボタル圏(left pivotal category)であるとは, モノイダル自然同型$A \xr{{}^*\pi_A} {}^{**}A$が存在する時である.
   \footnote{
       左ピボタル圏の定義として「剛モノイダル圏」$\to$「左剛モノイダル圏」, 「モノイダル自然同型」$\to$「モノイダル自然変換」とするものが一般的である. 
       この定義であっても直ちに右剛モノイダル圏であって(つまり剛モノイダル圏である), 自然変換が可逆である(つまり自然同型となる)ことが分かるので上の定義を採用した. 
@@ -2253,7 +2278,7 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
 
 \begin{defn}[右ピボタル圏]
   $C$を剛モノイダル圏とする. 
-  $C$が右ピボタル圏(right pivotal category)であるとはモノイダル自然同型$A \xr{\pi^*_A} A^{**}$が存在する時である.
+  $C$が右ピボタル圏(right pivotal category)であるとは, モノイダル自然同型$A \xr{\pi^*_A} A^{**}$が存在する時である.
   \footnote{
       右ピボタル圏の定義として「剛モノイダル圏」$\to$「右剛モノイダル圏」, 「モノイダル自然同型」$\to$「モノイダル自然変換」とするものが一般的である. 
       この定義であっても直ちに左剛モノイダル圏であって(つまり剛モノイダル圏である), 自然変換が可逆である(つまり自然同型となる)ことが分かるので上の定義を採用した. 
@@ -2296,7 +2321,7 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
   \footnote{
     平衡自然変換(balancing transformation)とも呼ばれる. 
   }
-  と呼ばれる自然同型$\theta_A: A \to A$が存在して以下の図式を可換にする時である. 
+  と呼ばれる自然同型$\theta_A: A \to A$が存在して, 以下の図式を可換にする時である. 
   \[\begin{tikzcd}
     {A \ot B} &&& {B \ot A} \\
     \\
@@ -2319,7 +2344,7 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
 \end{lem}
 
 \begin{prf}
-  コンパクト閉圏が対称モノイダル圏であるので次の図式が可換になることは明らかである.
+  コンパクト閉圏は対称モノイダル圏であるので, 次の図式が可換になることは明らかである.
   \[\begin{tikzcd}
     {A \ot B} &&& {B \ot A} \\
     \\
@@ -2336,53 +2361,61 @@ $A^*$や${}^*A$は$A$の双対対象(dual object)といわれる.
 \end{defn}
 
 \begin{defn}[左リボン圏]
-  $C$を平衡モノイダル圏とする. $C$が左リボン圏(left ribbon category, left tortile category)であるとは自然同型${}^*(\theta_A)=\theta_{{}^*A}$が存在する時である. 
+  $C$を平衡モノイダル圏とする. $C$が左リボン圏(left ribbon category, left tortile category)であるとは自然同型$\theta_A$が
+  \begin{align*}
+    {}^*(\theta_A)=\theta_{{}^*A}
+  \end{align*}
+  を満たす時である. 
 \end{defn}
 
 \begin{defn}[右リボン圏]
-  $C$を平衡モノイダル圏とする. $C$が右リボン圏(right ribbon category, right tortile category)であるとは自然同型$(\theta_A)^*=\theta_{A^*}$が存在する時である. 
+  $C$を平衡モノイダル圏とする. $C$が右リボン圏(right ribbon category, right tortile category)であるとは自然同型$\theta_A$が
+  \begin{align*}
+    (\theta_A)^*=\theta_{A^*}
+  \end{align*}
+  を満たす時である. 
 \end{defn}
 
 \subsection{ダガーコンパクト閉圏}
+
 執筆中
 
 \subsection{traceとdimension}
 
 \begin{defn}[左trace]
-  $C$を左ピボタル圏, $A$を対象とする. 
+  左ピボタル圏において$A$を対象とする. 
   射$A \xr{f} {}^{**}A$に対してscalar
   \begin{align*}
     I \xr{\coev_A} A \ot {}^*A \xr{f \ot \id_{{}^*A}} {}^{**}A \ot {}^*A \xr{\eva_{{}^*A}} I
   \end{align*}  
-    を$A$の左traceといい${}^*\tra_A(f)$や単に${}^*\tra(f)$と表す.  
+    を$A$の左traceといい, ${}^*\tra_A(f)$や単に${}^*\tra(f)$と表す.  
 \end{defn}
 
 \begin{defn}[右trace]
-  $C$を右ピボタル圏, $A$を対象とする. 
+  右ピボタル圏において$A$を対象とする. 
   射$A \xr{f} A^{**}$に対してscalar
   \begin{align*}
     I \xr{\coev'_A} A^* \ot A \xr{\id_{A^*} \ot f} A^* \ot A^{**} \xr{\eva_{A^{**}}} I
   \end{align*}  
-    を$A$の右traceといい$\tra^*_A(f)$や単に$\tra^*(f)$と表す.  
+    を$A$の右traceといい, $\tra^*_A(f)$や単に$\tra^*(f)$と表す.  
 \end{defn}
 
 \begin{defn}[左dimension]%左右も書く
-  $C$をピボタル圏, $A$を対象とする. 
-  対象$A$の左dimensionとはscalar: ${}^*\tra(\id_A)$でありこれを$\dime^*(A)$と表す. 
+  ピボタル圏において$A$を対象とする. 
+  対象$A$の左dimensionとはscalar: ${}^*\tra(\id_A)$であり, これを$\dime^*(A)$と表す. 
 \end{defn}
 
 \begin{defn}[右dimension]%左右も書く
-  $C$をピボタル圏, $A$を対象とする. 
-  対象$A$の右dimensionとはscalar: $\tra^*(\id_A)$でありこれを${}^*\dime(A)$と表す. 
+  ピボタル圏において$A$を対象とする. 
+  対象$A$の右dimensionとはscalar: $\tra^*(\id_A)$であり, これを${}^*\dime(A)$と表す. 
 \end{defn}
 
 traceやdimensionは線形代数に出てくる「トレース」や「次元」と似た性質を持つ. 
 scalarはモノイダル圏において定義されたが, traceとdimensionはピボタル圏において定義される. 
-以下で示す性質において様々な条件が課されることに注意してほしい. 
+以下で示す性質においてさまざまな条件が課されることに注意してほしい. 
 
 \begin{defn}
-  $C$をピボタル圏とする. 
-  この時, 以下の命題が成立する. 
+  ピボタル圏において以下の命題が成立する. 
   \begin{itemize}
     \item 射$A \xr{f} B$と$B \xr{g} A$に対して
     \begin{align*}
@@ -2398,20 +2431,22 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
 
 \subsection{重ね合わせ則と双対化}
 
+執筆中
+
 \newpage
 
 \section{モノイダル圏上のモノイド}
 
-モノイダル圏のテンソル積によって, その対象び対して乗法を考えることができる. 
+モノイダル圏のテンソル積によって, その対象に対して乗法を考えることができる. 
 これがモノイドの概念につながる. 
 実際, モノイダル圏におけるモノイドの概念はモノイダル圏において非常に重要である. 
 そしてこれは従来のモノイドの一般化となっている. 
 
-\subsection{モノイダル圏上のモノイド}
+\subsection{モノイド}
 
 \begin{defn}[モノイド]
   $C$をモノイダル圏とする. 
-  $C$のモノイド(monoid)とは対象$A$と射$A \ot A \xr{m} A, I \xr{u} A$の3つ組$(A,m,u)$であって以下の2つ図式を可換にするものである. 
+  $C$のモノイド(monoid)とは対象$A$と射$A \ot A \xr{m} A, I \xr{u} A$の3つ組$(A,m,u)$であって, 以下の2つの図式を可換にするものである. 
   \[\begin{tikzcd}
     {(A \ot A) \ot A} && {A \ot (A \ot A)} \\
     {A \ot A} & A & {A \ot A} \\
@@ -2433,8 +2468,25 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   \end{tikzcd}\]
 \end{defn}
 
+\begin{eg}
+  $\fhilb$において, Hilbert空間$H$の基底$\{e_i\}$は
+  \begin{align*}
+    m&: H \ot H \to H: e_i \ot e_i \mt e_i \\
+    u&: H \to I: e_i \mt 1
+  \end{align*}
+  によってモノイド構造が与えられる. 
+\end{eg}
+
+% \begin{eg}
+%   \begin{itemize}
+%     \item 任意のモノイダル圏において, 単位対象$I$は$m:=\rho_I, u:=\id_I$によってモノイド構造となる. 
+%     \item $\cset$においてモノイドは通常のモノイドである. 
+%     \item $\fhilb$においてモノイドは
+%   \end{itemize}
+% \end{eg}
+
 \begin{lem} 
-  上の2つ目の可換図式と次の図式が可換である事は同値である.
+  上の2つ目の可換図式と次の図式が可換であることは同値である.
   \[\begin{tikzcd}
     {I \ot A} && {A \ot A} && {A \ot I} \\
     && A
@@ -2446,9 +2498,16 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   \end{tikzcd}\]
 \end{lem}
 
+\begin{prf}
+  省略
+\end{prf}
+
 \begin{defn}[可換モノイド]
-  $C$を組紐モノイダル圏とする. 
-  $C$のモノイドが可換(commutative)であるとは上の2つに加えて以下の図式を可換にするものである. 
+  $C$を組紐モノイダル圏とする.
+  \footnote{
+    対称モノイダル圏とする定義もある. 
+  } 
+  $C$のモノイド$(A,m,u)$が可換(commutative)であるとは, 上の2つに加えて以下の図式を可換にするものである. 
   \[\begin{tikzcd}
     {A \ot A} && A \\
     & {A \ot A}
@@ -2456,12 +2515,16 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
     \arrow["{\si_{A,A}}"', from=1-1, to=2-2]
     \arrow["m"', from=2-2, to=1-3]
   \end{tikzcd}\]
-  この時, 可換モノイド(commutative monoid)であるという. 
+  この時, $(A,m,u)$を可換モノイド(commutative monoid)という. 
 \end{defn}
+
+\begin{eg}
+  $\fhilb$において基底$\{e_i\}$は可換モノイドとなる. 
+\end{eg}
 
 \begin{defn}[モノイド準同型]
   $C$をモノイダル圏とし, $C$のモノイドを$(A,m,u), (A',m',u')$とする. 
-  モノイド準同型(monoid homomorphism)とは射$A \xr{f} A'$であって以下の2つの図式を可換にするものである. 
+  モノイド準同型(monoid homomorphism)とは射$A \xr{f} A'$であって, 以下の2つの図式を可換にするものである. 
   \[\begin{tikzcd}
     {A \ot A} && A && I \\
     {A' \ot A'} && {A'} & A && {A'}
@@ -2475,13 +2538,36 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   \end{tikzcd}\]
 \end{defn}
 
+\begin{eg}
+  $\fhilb$においてモノイド準同型は基底の間の任意の関数
+  \begin{align*}
+    f: H \to H: \{d_i\} \mt \{e_j\}
+  \end{align*}
+  で与えられる.  
+\end{eg}
+
+(可換)モノイドとモノイド準同型は圏をなす. 
+
 \begin{defn}[圏$\mon$]
-  モノイドとモノイド準同型によって圏$\mon$が構成される. 
+  モノイドとモノイド準同型は圏をなす. 
+  この圏をモノイド圏$\mon$とする. 
 \end{defn}
+
+\begin{defn}[圏$\cmon$]
+  可換モノイドとモノイド準同型は圏をなす. 
+  この圏を可換モノイド圏$\cmon$とする. 
+\end{defn}
+
+\subsection{コモノイド}
+
+モノイダル圏においてモノイドの双対概念としてコモノイドが定義される. 
+つまり, コモノイドはモノイダル圏$C^\Op$におけるモノイドである. 
+圏論的量子力学においてはコモノイドの概念が重要である.
+詳しくは9章で述べることにする.  
 
 \begin{defn}[コモノイド]
   $C$をモノイダル圏とする. 
-  $C$上のコモノイド(comonoid)とは対象$A$と射$A \xr{d} A \ot A, A \xr{e} I$の3つ組であって以下の2つの図式を可換にするものである. 
+  $C$のコモノイド(comonoid)とは対象$A$と射$A \xr{d} A \ot A, A \xr{e} I$の3つ組$(A,d,e)$であって以下の2つの図式を可換にするものである. 
   \[\begin{tikzcd}
     {(A \ot A) \ot A} && {A \ot (A \ot A)} \\
     {A \ot A} & A & {A \ot A} \\
@@ -2503,9 +2589,9 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   \end{tikzcd}\]
 \end{defn}
 
-\begin{defn}
+\begin{defn}[可換コモノイド]
   $C$を組紐モノイダル圏とする. 
-  $C$のコモノイドが可換であるとは上の2つに加えて以下の図式を可換にするものである.
+  $C$のコモノイド$(A,d,e)$が可換であるとは, 上の2つに加えて以下の図式を可換にするものである.
   \[\begin{tikzcd}
     {A \ot A} && A \\
     & {A \ot A}
@@ -2513,12 +2599,12 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
     \arrow["{\si_{A,A}}", from=2-2, to=1-1]
     \arrow["d", from=1-3, to=2-2]
   \end{tikzcd}\]
-  この時, 可換コモノイドであるという. 
+  この時, $(A,d,e)$を可換コモノイドという. 
 \end{defn}
 
-\begin{defn}[モノイド準同型]
+\begin{defn}[コモノイド準同型]
   $C$をモノイダル圏とし, $C$のコモノイドを$(A,d,e), (A',d',e')$とする. 
-  モノイド準同型(monoid homomorphism)とは射$A \xr{f} A'$であって以下の2つの図式を可換にするものである. 
+  モノイド準同型(monoid homomorphism)とは射$A \xr{f} A'$であって,以下の2つの図式を可換にするものである. 
   \[\begin{tikzcd}
     A && {A \ot A} && I \\
     {A'} && {A' \ot A'} & A && {A'}
@@ -2532,75 +2618,47 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   \end{tikzcd}\]
 \end{defn}
 
-\begin{defn}[圏$\cmon$]
-  コモノイドとコモノイド準同型によって圏$\cmon$が構成される. 
-\end{defn}
+モノイダルダガー圏において, モノイドとコモノイドは結びつく. 
 
-\begin{defn}[ネーム, コネーム]%evとcoevとは違う
-  剛モノイダル圏において双対$A \dav A'$と$B \dav B'$と射$A \xr{f} B$に対してネーム(name)
-\end{defn}
-
-\begin{thrm}[pants]
-  $C$を剛モノイダル圏とする. 
-  $C$のある対象$A$に双対$A \dav {}^*A$がある時, ${}^*A \ot A$と射$({}^*A \ot A) \ot ({}^*A \ot A) \xr{j} {}^*A \ot A, I \xr{k} {}^*A \ot A$の3つ組$({}^*A \ot A,j,k)$はcanonicalなモノイドとなる. 
-  このモノイド$({}^*A \ot A,j,k)$をpants(pair of pants)という. 
+\begin{thrm}
+  モノイダルダガー圏において, $(A,m,u)$がモノイドであれば$(A,m^\da,u^\da)$はコモノイドである. 
 \end{thrm}
 
-\begin{thrm}[pants準同型の定理]
-  $C$を剛モノイダル圏とし, 対象$A$と双対$A \dav {}^*A$に対してモノイド$(A,m,u)$とpants$({}^*A \ot A,j,k)$が存在するとする. 
-  この時モノイド$(A,m,u)$とpants$({}^*A \ot A,j,k)$の間にモノイド準同型$(A,m,u) \xr{R} ({}^*A \ot A,j,k)$が存在してレトラクションを持つ. 
+\begin{prf}
+  省略
+\end{prf}
+
+% \begin{eg}
+%   a
+% \end{eg}
+
+\subsection{Cayleyの定理}
+
+剛モノイダル圏においてpantsモノイドというモノイドを定義することができる. 
+Cayleyの定理によって, 任意のモノイドがpantsモノイドに埋め込まれることが分かる. 
+
+% \begin{defn}[ネーム, コネーム]%evとcoevとは違う
+%   剛モノイダル圏において双対$A \dav A'$と$B \dav B'$と射$A \xr{f} B$に対してネーム(name)
+% \end{defn}
+
+\begin{thrm}[pantsモノイド]
+  剛モノイダル圏において, ある対象$A$が右双対$A^*$持つとする. 
+  この時, $A^* \ot A$と射$(A^* \ot A) \ot (A^* \ot A) \xr{j} A^* \ot A, I \xr{k} A^* \ot A$の3つ組$(A^* \ot A,j,k)$はモノイドとなる. 
+  この3つ組$(A^* \ot A,j,k)$をpantsモノイド(pair of pants monoid)という. 
 \end{thrm}
 
-\subsection{一様消去と一様複製}
+\begin{prf}
+  モノイドの定義を満たすことを確かめればよい. 
+\end{prf}
 
-\begin{defn}[一様消去]
-  $C$を圏とする.
-  $C$が一様消去(uniform deleting)を持つとは$C$の対象$A$と終対象$I$
-  \footnote{
-    $I$を終対象としない定義もあるがその場合でも一様消去を持つ時は$I$が終対象であることが分かるのでここでは初めから$I$を終対象とした. 
-  }
-  に対して自然同型$A \xr{e_A} I$が存在して$e_I=\id_I$を満たす時である.
-  \footnote{
-    以降では射$A \xr{e_A} I$のことも一様収束という.
-  }
-\end{defn}
+\begin{thrm}[Cayleyの定理]
+  剛モノイダル圏において, 対象$A$と双対$A \dav {}^*A$に対してモノイド$(A,m,u)$とpantsモノイド$(A^* \ot A,j,k)$が存在するとする. 
+  この時, $(A,m,u)$と$({}^*A \ot A,j,k)$の間にモノイド準同型$(A,m,u) \xr{R} (A^* \ot A,j,k)$が存在して, レトラクションを持つ. 
+\end{thrm}
 
-% \begin{thrm}
-%   $C$を圏とする. 
-%   以下の2つは同値である. 
-%   \begin{itemize}
-%     \item $C$が一様消去を持つ
-%     \item $C$の対象$I$が終対象である. 
-%   \end{itemize}
-% \end{thrm}
-
-\begin{defn}[消去]
-  零対象$I$を持つモノイダル圏において$A$を対象とする. 
-  射$A \xr{e_A} I$が状態$I \xr{a} A$を消去(deleting)するとは以下の図式が可換になる時である. 
-  \[\begin{tikzcd}
-    I &&&& I \\
-    && A
-    \arrow["{\id_A}", from=1-1, to=1-5]
-    \arrow["a"', from=1-1, to=2-3]
-    \arrow["{e_A}"', from=2-3, to=1-5]
-  \end{tikzcd}\]
-\end{defn}
-
-\begin{defn}[well-pointed]
-  $C$をモノイダル圏, $A,B$を対象, $A \overset{f}{\underset{g}{\rightrightarrows}} B$を射とする. 
-  $C$がwell-pointedであるとは任意の状態$I \xr{a} A$に対して$f \ci a=g \ci a$であれば$f=g$となる時である. \\
-  $C$がモノイダルにwell-pointedであるとは射$\bigot_{i=1}^{n} A_i \overset{f}{\underset{g}{\rightrightarrows}} B$と任意の状態$I \xr{a_i} A ~(i=1,\dots n)$に対して$f \ci \left( \bigot_{i=1}^{n} a_i \right)=g \ci \left( \bigot_{i=1}^{n} a_i \right)$であれば$f=g$となる時である. 
-\end{defn}
-
-\begin{lem}
-  零対象$I$を持つモノイダル圏において$A$を対象とする. 
-  射$A \xr{e_A} I$が一様収束を持つ時, 任意の状態$I \xr{a} A$を消去する. 
-  逆に任意の状態$I \xr{a} A$を消去するのは圏がwell-pointedである時に限る. 
-\end{lem}
-
-\begin{defn}[消去禁止定理]
-  コンパクト閉圏が一様消去を持つ時, $\pre$と圏同値となる. 
-\end{defn}
+\begin{prf}
+  執筆中
+\end{prf}
 
 \newpage
 
@@ -2692,7 +2750,7 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
   効果の集合$\{x_i | A \to I\}_{1 \leq i \leq n}$が完全集合(complete set)であるとは任意の射$B \xr{f} A$に対してある効果$x_i$が存在して$x_i \ci f = 0_{B,I}$であれば$f = 0_{B,A}$となる時である. 
 \end{defn}
 
-対偶をとるとつまり$0$でない過程に対して$0$でない効果をうみだすということである. 
+対偶をとると, つまり$0$でない過程に対して$0$でない効果をうみだすということである. 
 
 \begin{defn}[非交和]
   効果の集合$\{x_i | A \to I\}_{1 \leq i \leq n}$が非交和(disjoint)であるとは任意の$i \neq j$に対して
@@ -2746,11 +2804,63 @@ scalarはモノイダル圏において定義されたが, traceとdimensionは�
 
 \section{量子複製不可能定理}
 
+\subsection{一様消去と一様複製}
+
+\begin{defn}[一様消去]
+  $C$を圏とする.
+  $C$が一様消去(uniform deleting)を持つとは$C$の対象$A$と終対象$I$
+  \footnote{
+    $I$を終対象としない定義もあるがその場合でも一様消去を持つ時は$I$が終対象であることが分かるのでここでは初めから$I$を終対象とした. 
+  }
+  に対して自然同型$A \xr{e_A} I$が存在して$e_I=\id_I$を満たす時である.
+  \footnote{
+    以降では射$A \xr{e_A} I$のことも一様収束という.
+  }
+\end{defn}
+
+% \begin{thrm}
+%   $C$を圏とする. 
+%   以下の2つは同値である. 
+%   \begin{itemize}
+%     \item $C$が一様消去を持つ
+%     \item $C$の対象$I$が終対象である. 
+%   \end{itemize}
+% \end{thrm}
+
+\begin{defn}[消去]
+  零対象$I$を持つモノイダル圏において$A$を対象とする. 
+  射$A \xr{e_A} I$が状態$I \xr{a} A$を消去(deleting)するとは以下の図式が可換になる時である. 
+  \[\begin{tikzcd}
+    I &&&& I \\
+    && A
+    \arrow["{\id_A}", from=1-1, to=1-5]
+    \arrow["a"', from=1-1, to=2-3]
+    \arrow["{e_A}"', from=2-3, to=1-5]
+  \end{tikzcd}\]
+\end{defn}
+
+\begin{defn}[well-pointed]
+  $C$をモノイダル圏, $A,B$を対象, $A \overset{f}{\underset{g}{\rightrightarrows}} B$を射とする. 
+  $C$がwell-pointedであるとは任意の状態$I \xr{a} A$に対して$f \ci a=g \ci a$であれば$f=g$となる時である. \\
+  $C$がモノイダルにwell-pointedであるとは射$\bigot_{i=1}^{n} A_i \overset{f}{\underset{g}{\rightrightarrows}} B$と任意の状態$I \xr{a_i} A ~(i=1,\dots n)$に対して$f \ci \left( \bigot_{i=1}^{n} a_i \right)=g \ci \left( \bigot_{i=1}^{n} a_i \right)$であれば$f=g$となる時である. 
+\end{defn}
+
+\begin{lem}
+  零対象$I$を持つモノイダル圏において$A$を対象とする. 
+  射$A \xr{e_A} I$が一様収束を持つ時, 任意の状態$I \xr{a} A$を消去する. 
+  逆に任意の状態$I \xr{a} A$を消去するのは圏がwell-pointedである時に限る. 
+\end{lem}
+
 \subsection{量子複製不可能定理}
+
+\begin{defn}[消去禁止定理]
+  コンパクト閉圏が一様消去を持つ時, $\pre$と圏同値となる. 
+\end{defn}
+
 
 \newpage
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{EGNO}
   \bibitem[c4qt]{cfqt} Chris Heunen and Jamie Vicary `Categories for Quantum Theory An Introduction'
   \bibitem[Alg-d]{alg-d} Alg-d \href{http://alg-d.com/}{壱大整域}
   \bibitem[gihou]{gihou} 中岡宏行 `圏論の技法'
